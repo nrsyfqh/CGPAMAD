@@ -1,16 +1,11 @@
+import 'package:cgpa_application/presentation/home_screen/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:cgpa_application/presentation/adacana_screen/adacana_screen.dart';
 import 'package:cgpa_application/presentation/login_or_signup_screen/login_or_signup_screen.dart';
 import 'package:cgpa_application/presentation/signup_screen/signup_screen.dart';
 import 'package:cgpa_application/presentation/login_screen/login_screen.dart';
-import 'package:cgpa_application/presentation/forgot_password_screen/forgot_password_screen.dart';
-import 'package:cgpa_application/presentation/home_screen/home_screen.dart';
-import 'package:cgpa_application/presentation/personality_screen/personality_screen.dart';
-import 'package:cgpa_application/presentation/work_today_screen/work_today_screen.dart';
 import 'package:cgpa_application/presentation/cgpa_screen/cgpa_screen.dart';
-import 'package:cgpa_application/presentation/settings_screen/settings_screen.dart';
-import 'package:cgpa_application/presentation/language_screen/language_screen.dart';
-import 'package:cgpa_application/presentation/termsandconditions_screen/termsandconditions_screen.dart';
+import 'package:cgpa_application/presentation/result_screen/ResultPage.dart';
 import 'package:cgpa_application/presentation/app_navigation_screen/app_navigation_screen.dart';
 
 class AppRoutes {
@@ -26,17 +21,9 @@ class AppRoutes {
 
   static const String homeScreen = '/home_screen';
 
-  static const String personalityScreen = '/personality_screen';
+  static const String cgpaScreen = '/cgpa_screen';
 
-  static const String workTodayScreen = '/work_today_screen';
-
-  static const String wishListScreen = '/wish_list_screen';
-
-  static const String settingsScreen = '/settings_screen';
-
-  static const String languageScreen = '/language_screen';
-
-  static const String termsandconditionsScreen = '/termsandconditions_screen';
+  static const String resultScreen = '/result_screen';
 
   static const String appNavigationScreen = '/app_navigation_screen';
 
@@ -45,14 +32,9 @@ class AppRoutes {
     loginOrSignupScreen: (context) => LoginOrSignupScreen(),
     signupScreen: (context) => SignupScreen(),
     loginScreen: (context) => LoginScreen(),
-    forgotPasswordScreen: (context) => ForgotPasswordScreen(),
-    homeScreen: (context) => HomeScreen(),
-    personalityScreen: (context) => PersonalityScreen(),
-    workTodayScreen: (context) => WorkTodayScreen(),
-    wishListScreen: (context) => WishListScreen(),
-    settingsScreen: (context) => SettingsScreen(),
-    languageScreen: (context) => LanguageScreen(),
-    termsandconditionsScreen: (context) => TermsandconditionsScreen(),
-    appNavigationScreen: (context) => AppNavigationScreen()
+    homeScreen: (context) => HomePage(),
+    cgpaScreen: (context) => CGPACalculate(0),
+    resultScreen: (context) => ResultPage(score: 4.0),
+    appNavigationScreen: (context) => CustomNavBar()
   };
 }

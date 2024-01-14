@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:cgpa_application/presentation/cgpa_screen/ResultPage.dart';
+import 'package:cgpa_application/presentation/result_screen/ResultPage.dart';
 
 class CGPACalculate extends StatefulWidget {
   final int n;
 
-  CGPACalculate(this.n);
+  CGPACalculate(int pass, {Key? key, this.n = 0}) : super(key: key);
 
   @override
   _GPAcalculateState createState() => _GPAcalculateState();
@@ -13,15 +13,13 @@ class CGPACalculate extends StatefulWidget {
 class _GPAcalculateState extends State<CGPACalculate> {
   late List<TextEditingController> _sgpaController;
   late List<TextEditingController> _creditController;
-  late List list;
+  late List<int> list;
 
   @override
   void initState() {
     super.initState();
-
     _sgpaController = List.generate(widget.n, (index) => TextEditingController());
     _creditController = List.generate(widget.n, (index) => TextEditingController());
-
     list = List<int>.generate(widget.n, (i) => i);
   }
 
@@ -34,43 +32,9 @@ class _GPAcalculateState extends State<CGPACalculate> {
 
     list.forEach((i) {
       fields.add(
-        Row(
-          children: [
-            Text(
-              "Semester ${i + 1}:",
-              style: TextStyle(
-                color: Colors.black87,
-                fontWeight: FontWeight.bold,
-                fontSize: 16.0,
-              ),
-            ),
-            SizedBox(width: 20.0),
-            Expanded(
-              child: TextField(
-                keyboardType: TextInputType.number,
-                controller: _sgpaController[i],
-                decoration: InputDecoration(
-                  hintText: "SGPA",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(width: 20.0),
-            Expanded(
-              child: TextField(
-                keyboardType: TextInputType.number,
-                controller: _creditController[i],
-                decoration: InputDecoration(
-                  hintText: "CREDIT",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-              ),
-            ),
-          ],
+        SemesterInputField(
+          sgpaController: _sgpaController[i],
+          creditController: _creditController[i],
         ),
       );
     });
@@ -104,7 +68,7 @@ class _GPAcalculateState extends State<CGPACalculate> {
             SizedBox(height: 20),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.deepOrange,
+                primary: Colors.lightBlueAccent,
                 padding: EdgeInsets.all(16.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
@@ -112,8 +76,7 @@ class _GPAcalculateState extends State<CGPACalculate> {
               ),
               onPressed: () {
                 for (int i = 0; i < widget.n; i++) {
-                  if (_creditController[i].text.isEmpty ||
-                      _sgpaController[i].text.isEmpty) {
+                  if (_creditController[i].text.isEmpty || _sgpaController[i].text.isEmpty) {
                     insertedValue = false;
                     continue;
                   }
@@ -130,7 +93,7 @@ class _GPAcalculateState extends State<CGPACalculate> {
                 if (insertedValue == true)
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (BuildContext context) => ResultPage(cgpa),
+                      builder: (BuildContext context) => ResultPage(score: cgpa),
                     ),
                   );
                 else {
@@ -165,6 +128,58 @@ class _GPAcalculateState extends State<CGPACalculate> {
           ],
         );
       },
+    );
+  }
+}
+
+class SemesterInputField extends StatelessWidget {
+  final TextEditingController sgpaController;
+  final TextEditingController creditController;
+
+  SemesterInputField({
+    required this.sgpaController,
+    required this.creditController,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(
+          "Semester:",
+          style: TextStyle(
+            color: Colors.black87,
+            fontWeight: FontWeight.bold,
+            fontSize: 16.0,
+          ),
+        ),
+        SizedBox(width: 20.0),
+        Expanded(
+          child: TextField(
+            keyboardType: TextInputType.number,
+            controller: sgpaController,
+            decoration: InputDecoration(
+              hintText: "SGPA",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+            ),
+          ),
+        ),
+        SizedBox(width: 20.0),
+        Expanded(
+          child: TextField(
+            keyboardType: TextInputType.number,
+            controller: creditController,
+            decoration: InputDecoration(
+              hintText: "CREDIT",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
