@@ -9,7 +9,7 @@ class ResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.deepOrange,
+      color: Colors.lightBlueAccent,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
