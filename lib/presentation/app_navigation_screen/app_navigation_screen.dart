@@ -1,5 +1,8 @@
 import 'package:cgpa_application/presentation/cgpa_screen/homePage.dart';
 import 'package:flutter/material.dart';
+import 'package:cgpa_application/presentation/cgpa_screen/ResultPage.dart';
+import 'package:cgpa_application/presentation/cgpa_screen/cgpa_screen.dart';
+import 'package:cgpa_application/presentation/home_screen/HomePage.dart';
 
 class CustomNavBar extends StatefulWidget {
   const CustomNavBar({Key? key}) : super(key: key);
@@ -12,13 +15,16 @@ class _CustomNavBarState extends State<CustomNavBar> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    MyHomePage (),
+    HomePage(),
+    CGPACalculate(),
+    ResultPage(),
+    // Profile(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_currentIndex],
+      body: _pages[_currentIndex](),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,

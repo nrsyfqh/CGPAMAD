@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           theme: theme,
           title: 'cgpa_application',
           debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.adacanaScreen,
+          initialRoute: AppRoutes.CGPACalculate,
           routes: AppRoutes.routes,
         );
       },
