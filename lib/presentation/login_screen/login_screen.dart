@@ -114,11 +114,6 @@ class LoginScreen extends StatelessWidget {
     Navigator.pop(context);
   }
 
-  /// Navigates to the forgotPasswordScreen when the action is triggered.
-  onTapTxtForgotPasswor(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.forgotPasswordScreen);
-  }
-
   /// Navigates to the signupScreen when the action is triggered.
   onTapNext(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.signupScreen);

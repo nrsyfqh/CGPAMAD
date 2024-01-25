@@ -1,7 +1,5 @@
+import 'package:cgpa_application/presentation/cgpa_screen/homePage.dart';
 import 'package:flutter/material.dart';
-import 'package:cgpa_application/presentation/cgpa_screen/ResultPage.dart';
-import 'package:cgpa_application/presentation/cgpa_screen/cgpa_screen.dart';
-import 'package:cgpa_application/presentation/home_screen/HomePage.dart';
 
 class CustomNavBar extends StatefulWidget {
   const CustomNavBar({Key? key}) : super(key: key);
@@ -14,10 +12,7 @@ class _CustomNavBarState extends State<CustomNavBar> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    HomePage(),
-    CGPACalculate(),
-    ResultPage(),
-    // Profile(),
+    MyHomePage (),
   ];
 
   @override
@@ -41,18 +36,6 @@ class _CustomNavBarState extends State<CustomNavBar> {
             icon: Icon(Icons.star),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.local_pharmacy),
-            label: 'CGPA',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.schedule),
-            label: 'Result',
-          ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.person),
-          //   label: 'Profile',
-          // ),
         ],
       ),
     );

@@ -1,5 +1,3 @@
-import 'package:cgpa_application/presentation/cgpa_screen/cgpa_screen.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart';
@@ -26,7 +24,7 @@ class MyApp extends StatelessWidget {
           theme: theme,
           title: 'cgpa_application',
           debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.CGPACalculate,
+          initialRoute: AppRoutes.adacanaScreen,
           routes: AppRoutes.routes,
         );
       },
